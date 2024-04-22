@@ -1,0 +1,25 @@
+name: Node.js Yarn Workflow
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18' # 您可以指定您需要的 Node.js 版本
+
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Start development server
+      run: yarn serve
+
+    - name: Run build
+      run: yarn build
